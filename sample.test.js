@@ -25,11 +25,11 @@ function fibonacci(n) {
   return fibonacci(n - 1) + fibonacci(n - 2);
 }
 
-test('fibonacci of 10', () => {
+test('fibonacci of 100', () => {
   expect(fibonacci(10)).toBe(55);
 });
 
-test('fibonacci of 20', () => {
+test('fibonacci of 50', () => {
   expect(fibonacci(20)).toBe(6765);
 });
 
