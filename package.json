@@ -1,1 +1,14 @@
-jest
+{
+  "name": "ci-parallelism",
+  "version": "1.0.0",
+  "description": "Your project description",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^27.0.0"
+  }
+}
