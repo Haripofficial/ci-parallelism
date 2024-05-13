@@ -1,0 +1,31 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:14
+
+    parallelism: 4  # Number of containers to use for parallelism
+
+    steps:
+      - checkout
+
+      # Restore dependencies
+      - run:
+          name: Install dependencies
+          command: npm install --save-dev jest
+
+      # Run tests in parallel
+      - run:
+          name: Run tests in parallel
+          command: npm test
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - main
