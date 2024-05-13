@@ -1,39 +1,42 @@
 version: 2.1
 
 jobs:
-  build:
+  install_dependencies:
     docker:
       - image: circleci/node:14
-
     resource_class: haripofficial/parallel
+    steps:
+      - checkout
+
+      # Install dependencies
+      - run:
+          name: Install dependencies
+          command: npm install
+
+  run_tests:
+    docker:
+      - image: circleci/node:14
+    resource_class: haripofficial/parallel
+    parallelism: 10
 
     steps:
       - checkout
 
       # Restore dependencies
-      - run:
-          name: Install dependencies
-          command: npm install jest
-
-  test:
-    docker:
-      - image: circleci/node:14
-
-    parallelism: 4  # Number of containers to use for parallelism
-    resource_class: haripofficial/parallel
-
-    steps:
-      - checkout
+      - attach_workspace:
+          at: /root/project
 
       # Run tests in parallel
       - run:
           name: Run tests in parallel
           command: npm test
+
 workflows:
   version: 2
   build:
     jobs:
-      - build
-      - test:
+      - install_dependencies
+      - run_tests:
           requires:
-            - build
+            - install_dependencies
+
