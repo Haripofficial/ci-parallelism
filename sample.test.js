@@ -40,3 +40,26 @@ test('fibonacci of 30', () => {
 test('fibonacci of 40', () => {
   expect(fibonacci(40)).toBe(102334155);
 });
+
+
+// Sorting a large array
+test('sorting large array', () => {
+  const array = Array.from({ length: 100000 }, () => Math.random());
+  const sortedArray = array.slice().sort();
+  expect(sortedArray).toEqual(array.sort());
+});
+
+
+// Calculating prime numbers
+test('calculating prime numbers up to 10000', () => {
+  const primes = calculatePrimes(10000);
+  expect(primes).toContain(9973); // A prime number less than 10000
+});
+
+
+
+// Calculating prime numbers
+test('calculating prime numbers up to 100000', () => {
+  const primes = calculatePrimes(10000);
+  expect(primes).toContain(9973); // A prime number less than 10000
+});
