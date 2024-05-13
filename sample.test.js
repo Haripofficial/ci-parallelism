@@ -44,22 +44,20 @@ test('fibonacci of 40', () => {
 
 // Sorting a large array
 test('sorting large array', () => {
-  const array = Array.from({ length: 100000 }, () => Math.random());
+  const array = Array.from({ length: 10000000 }, () => Math.random());
   const sortedArray = array.slice().sort();
   expect(sortedArray).toEqual(array.sort());
 });
 
 
-// Calculating prime numbers
-test('calculating prime numbers up to 10000', () => {
-  const primes = calculatePrimes(10000);
-  expect(primes).toContain(9973); // A prime number less than 10000
+test('sorting large array', () => {
+  const array = Array.from({ length: 10000000 }, () => Math.random());
+  const sortedArray = array.slice().sort();
+  expect(sortedArray).toEqual(array.sort());
 });
 
-
-
-// Calculating prime numbers
-test('calculating prime numbers up to 100000', () => {
-  const primes = calculatePrimes(10000);
-  expect(primes).toContain(9973); // A prime number less than 10000
+test('sorting large array', () => {
+  const array = Array.from({ length: 100000000 }, () => Math.random());
+  const sortedArray = array.slice().sort();
+  expect(sortedArray).toEqual(array.sort());
 });
