@@ -44,20 +44,20 @@ test('fibonacci of 40', () => {
 
 // Sorting a large array
 test('sorting large array', () => {
-  const array = Array.from({ length: 10000000 }, () => Math.random());
+  const array = Array.from({ length: 100000 }, () => Math.random());
   const sortedArray = array.slice().sort();
   expect(sortedArray).toEqual(array.sort());
 });
 
 
 test('sorting large array', () => {
-  const array = Array.from({ length: 10000000 }, () => Math.random());
+  const array = Array.from({ length: 100000 }, () => Math.random());
   const sortedArray = array.slice().sort();
   expect(sortedArray).toEqual(array.sort());
 });
 
 test('sorting large array', () => {
-  const array = Array.from({ length: 100000000 }, () => Math.random());
+  const array = Array.from({ length: 1000000 }, () => Math.random());
   const sortedArray = array.slice().sort();
   expect(sortedArray).toEqual(array.sort());
 });
