@@ -29,13 +29,11 @@ jobs:
       - run:
           name: Run tests in parallel
           command: npm test
-
-# workflows:
-#   version: 2
-#   build:
-#     jobs:
-#       - build:
-#           filters:
-#             branches:
-#               only:
-#                 - main
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
+      - run_tests:
+          requires:
+            - test
