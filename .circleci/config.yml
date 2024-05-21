@@ -5,7 +5,7 @@ jobs:
     docker:
       - image: circleci/node:14
     resource_class: haripofficial/parallel
-    parallelism: 3
+    parallelism: 6
     steps:
       - checkout
 
