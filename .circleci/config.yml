@@ -5,32 +5,30 @@ parameters:
     type: enum
     default: "haripofficial/parallel"
     enum: ["small", "medium", "large", "haripofficial/parallel"]
+  parallelism:
+    type: integer
+    default: 15
+  tags:
+    type: enum
+    default: "@Regression"
+    enum: ["@Regression", "@SmokeTest"]
 
-jobs:
-  test:
+orbs: 
+  cypress: cypress-io/cypress@2.0.0
+executors:
+  with-chrome:
     docker:
-      - image: circleci/node:14
+      - image: 'cypress/browsers:node16.14.0-chrome99-ff97'
     resource_class: << pipeline.parameters.resource_class >>
-    parallelism: 3
-    steps:
-      - checkout
-
-      # Install dependencies
-      - run:
-          name: Install dependencies
-          command: npm install
-
-      # Run tests in parallel
-      - run:
-          name: Run tests in parallel
-          command: npm test
-
+      
 workflows:
-  version: 2
   build:
     jobs:
-      - test
-      # - run_tests:
-      #     requires:
-      #       - install_dependencies
+      - cypress/run:
+          executor: with-chrome
+          browser: chrome
+          parallelism: << pipeline.parameters.parallelism >>
+          timeout: 90m
+          command: npm install && npm test
+
 
