@@ -1,10 +1,16 @@
 version: 2.1
 
+parameters:
+  resource_class:
+    type: enum
+    default: "haripofficial/parallel"
+    enum: ["small", "medium", "large", "haripofficial/parallel"]
+
 jobs:
   test:
     docker:
       - image: circleci/node:14
-    resource_class: haripofficial/parallel
+    resource_class: << pipeline.parameters.resource_class >>
     parallelism: 3
     steps:
       - checkout
